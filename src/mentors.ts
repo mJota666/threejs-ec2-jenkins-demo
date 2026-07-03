@@ -52,7 +52,7 @@ export const mentorCards: MentorCard[] = [
     role: 'CORE',
     theme: 'red',
     stats: [
-      { value: '94', label: 'ARCH' },
+      { value: '95', label: 'ARCH' },
       { value: '96', label: 'SHIP' },
       { value: '97', label: 'LEAD' },
       { value: '95', label: 'CODE' },
