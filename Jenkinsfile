@@ -27,6 +27,10 @@ pipeline {
         )
     }
 
+    triggers {
+        githubPush()
+    }
+
     options {
         timestamps()
         disableConcurrentBuilds()
