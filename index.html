@@ -3,108 +3,80 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Interactive 3D football player card landing page." />
-    <title>Elite XI Card Lab</title>
+    <meta name="description" content="Interactive 3D mentor football cards." />
+    <title>Mentor Card Showcase</title>
   </head>
   <body>
-    <main id="app">
-      <section class="hero" aria-label="Elite football card landing page">
-        <div class="hero-copy">
-          <p class="eyebrow">Release v3 / Football Card Lab</p>
-          <h1>Elite XI Card Lab</h1>
-          <p>
-            Three premium 3D football cards with live image swaps, foil shine,
-            and pointer-controlled tilt for a clean deployment demo.
-          </p>
-          <div class="demo-strip">
-            <span>Hover to rotate</span>
-            <span>Upload to change image</span>
-            <span>Push to redeploy</span>
+    <main id="app" aria-label="3D mentor card showcase">
+      <section class="card-stage">
+        <article class="player-card card-gold" data-card>
+          <div class="card-inner">
+            <div class="energy-ring"></div>
+            <div class="card-meta">
+              <strong>99</strong>
+              <span>LEAD</span>
+            </div>
+            <div class="club-mark">MENTOR</div>
+            <div class="player-frame">
+              <div class="player-photo" style="--mentor-image: url('/mentors/wyatt.svg')"></div>
+            </div>
+            <div class="player-name">Wyatt Truong</div>
+            <div class="stat-grid">
+              <span><b>98</b> ARCH</span>
+              <span><b>97</b> SHIP</span>
+              <span><b>99</b> LEAD</span>
+              <span><b>96</b> CODE</span>
+              <span><b>95</b> OPS</span>
+              <span><b>99</b> IQ</span>
+            </div>
           </div>
-        </div>
+        </article>
 
-        <div class="card-stage" aria-label="Interactive football cards">
-          <article class="player-card card-gold" data-card>
-            <div class="card-inner">
-              <div class="card-rim"></div>
-              <div class="card-meta">
-                <strong>94</strong>
-                <span>ST</span>
-              </div>
-              <div class="club-mark">XI</div>
-              <div class="player-frame">
-                <div class="player-photo striker"></div>
-              </div>
-              <div class="player-name">Wyatt Truong</div>
-              <div class="stat-grid">
-                <span><b>96</b> PAC</span>
-                <span><b>93</b> SHO</span>
-                <span><b>88</b> PAS</span>
-                <span><b>95</b> DRI</span>
-                <span><b>47</b> DEF</span>
-                <span><b>84</b> PHY</span>
-              </div>
-              <label class="image-picker">
-                <input type="file" accept="image/*" data-image-input />
-                Change image
-              </label>
+        <article class="player-card card-blue" data-card>
+          <div class="card-inner">
+            <div class="energy-ring"></div>
+            <div class="card-meta">
+              <strong>97</strong>
+              <span>PLAY</span>
             </div>
-          </article>
+            <div class="club-mark">MENTOR</div>
+            <div class="player-frame">
+              <div class="player-photo" style="--mentor-image: url('/mentors/vu.svg')"></div>
+            </div>
+            <div class="player-name">Vu Tran</div>
+            <div class="stat-grid">
+              <span><b>96</b> ARCH</span>
+              <span><b>98</b> SHIP</span>
+              <span><b>95</b> LEAD</span>
+              <span><b>99</b> CODE</span>
+              <span><b>94</b> OPS</span>
+              <span><b>97</b> IQ</span>
+            </div>
+          </div>
+        </article>
 
-          <article class="player-card card-blue" data-card>
-            <div class="card-inner">
-              <div class="card-rim"></div>
-              <div class="card-meta">
-                <strong>91</strong>
-                <span>CM</span>
-              </div>
-              <div class="club-mark">PRO</div>
-              <div class="player-frame">
-                <div class="player-photo playmaker"></div>
-              </div>
-              <div class="player-name">Vu Tran</div>
-              <div class="stat-grid">
-                <span><b>82</b> PAC</span>
-                <span><b>86</b> SHO</span>
-                <span><b>96</b> PAS</span>
-                <span><b>92</b> DRI</span>
-                <span><b>78</b> DEF</span>
-                <span><b>81</b> PHY</span>
-              </div>
-              <label class="image-picker">
-                <input type="file" accept="image/*" data-image-input />
-                Change image
-              </label>
+        <article class="player-card card-red" data-card>
+          <div class="card-inner">
+            <div class="energy-ring"></div>
+            <div class="card-meta">
+              <strong>96</strong>
+              <span>CORE</span>
             </div>
-          </article>
-
-          <article class="player-card card-red" data-card>
-            <div class="card-inner">
-              <div class="card-rim"></div>
-              <div class="card-meta">
-                <strong>89</strong>
-                <span>CB</span>
-              </div>
-              <div class="club-mark">FC</div>
-              <div class="player-frame">
-                <div class="player-photo guardian"></div>
-              </div>
-              <div class="player-name">Danh Bui</div>
-              <div class="stat-grid">
-                <span><b>78</b> PAC</span>
-                <span><b>62</b> SHO</span>
-                <span><b>76</b> PAS</span>
-                <span><b>74</b> DRI</span>
-                <span><b>94</b> DEF</span>
-                <span><b>93</b> PHY</span>
-              </div>
-              <label class="image-picker">
-                <input type="file" accept="image/*" data-image-input />
-                Change image
-              </label>
+            <div class="club-mark">MENTOR</div>
+            <div class="player-frame">
+              <div class="player-photo" style="--mentor-image: url('/mentors/danh.svg')"></div>
             </div>
-          </article>
-        </div>
+            <div class="player-name">Danh Bui</div>
+            <div class="stat-grid">
+              <span><b>94</b> ARCH</span>
+              <span><b>96</b> SHIP</span>
+              <span><b>97</b> LEAD</span>
+              <span><b>95</b> CODE</span>
+              <span><b>99</b> OPS</span>
+              <span><b>96</b> IQ</span>
+            </div>
+          </div>
+        </article>
       </section>
     </main>
     <script type="module" src="/src/main.ts"></script>
