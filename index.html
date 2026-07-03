@@ -10,18 +10,33 @@
     <main id="app">
       <canvas id="scene" aria-label="Interactive 3D scene"></canvas>
       <section class="hud" aria-label="Project status">
-        <p class="eyebrow">Three.js / Jenkins / EC2</p>
-        <h1>Orbital Launch Pad 3</h1>
+        <p class="eyebrow">Release v2 / Interactive Three.js</p>
+        <h1>Orbital Command</h1>
         <p>
-          A lightweight 3D landing scene built for static deployment through
-          Jenkins and Nginx on AWS EC2.
+          Pilot the camera, switch the station mode, and watch the whole scene
+          react in real time after the Jenkins redeploy.
         </p>
         <div class="stats">
-          <span>Vite build</span>
-          <span>Nginx serve</span>
-          <span>Jenkins deploy</span>
+          <span>Drag to orbit</span>
+          <span>WASD to move</span>
+          <span>Shift to boost</span>
         </div>
       </section>
+      <aside class="control-panel" aria-label="Scene controls">
+        <div class="mode-tabs" role="group" aria-label="Station mode">
+          <button class="mode-button is-active" type="button" data-mode="launch">Launch</button>
+          <button class="mode-button" type="button" data-mode="scan">Scan</button>
+          <button class="mode-button" type="button" data-mode="storm">Storm</button>
+        </div>
+        <div class="telemetry">
+          <span>Velocity</span>
+          <strong id="velocity-readout">1.0x</strong>
+        </div>
+        <div class="telemetry">
+          <span>Mode</span>
+          <strong id="mode-readout">Launch</strong>
+        </div>
+      </aside>
     </main>
     <script type="module" src="/src/main.ts"></script>
   </body>
