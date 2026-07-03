@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Three.js static site deployed to EC2 with Jenkins." />
+    <title>Three.js EC2 Jenkins Demo</title>
+  </head>
+  <body>
+    <main id="app">
+      <canvas id="scene" aria-label="Interactive 3D scene"></canvas>
+      <section class="hud" aria-label="Project status">
+        <p class="eyebrow">Three.js / Jenkins / EC2</p>
+        <h1>Orbital Launch Pad</h1>
+        <p>
+          A lightweight 3D landing scene built for static deployment through
+          Jenkins and Nginx on AWS EC2.
+        </p>
+        <div class="stats">
+          <span>Vite build</span>
+          <span>Nginx serve</span>
+          <span>Jenkins deploy</span>
+        </div>
+      </section>
+    </main>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
