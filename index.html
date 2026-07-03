@@ -3,40 +3,109 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Three.js static site deployed to EC2 with Jenkins." />
-    <title>Three.js EC2 Jenkins Demo</title>
+    <meta name="description" content="Interactive 3D football player card landing page." />
+    <title>Elite XI Card Lab</title>
   </head>
   <body>
     <main id="app">
-      <canvas id="scene" aria-label="Interactive 3D scene"></canvas>
-      <section class="hud" aria-label="Project status">
-        <p class="eyebrow">Release v2 / Interactive Three.js</p>
-        <h1>Orbital Command</h1>
-        <p>
-          Pilot the camera, switch the station mode, and watch the whole scene
-          react in real time after the Jenkins redeploy.
-        </p>
-        <div class="stats">
-          <span>Drag to orbit</span>
-          <span>WASD to move</span>
-          <span>Shift to boost</span>
+      <section class="hero" aria-label="Elite football card landing page">
+        <div class="hero-copy">
+          <p class="eyebrow">Release v3 / Football Card Lab</p>
+          <h1>Elite XI Card Lab</h1>
+          <p>
+            Three premium 3D football cards with live image swaps, foil shine,
+            and pointer-controlled tilt for a clean deployment demo.
+          </p>
+          <div class="demo-strip">
+            <span>Hover to rotate</span>
+            <span>Upload to change image</span>
+            <span>Push to redeploy</span>
+          </div>
+        </div>
+
+        <div class="card-stage" aria-label="Interactive football cards">
+          <article class="player-card card-gold" data-card>
+            <div class="card-inner">
+              <div class="card-rim"></div>
+              <div class="card-meta">
+                <strong>94</strong>
+                <span>ST</span>
+              </div>
+              <div class="club-mark">XI</div>
+              <div class="player-frame">
+                <div class="player-photo striker"></div>
+              </div>
+              <div class="player-name">Wyatt Truong</div>
+              <div class="stat-grid">
+                <span><b>96</b> PAC</span>
+                <span><b>93</b> SHO</span>
+                <span><b>88</b> PAS</span>
+                <span><b>95</b> DRI</span>
+                <span><b>47</b> DEF</span>
+                <span><b>84</b> PHY</span>
+              </div>
+              <label class="image-picker">
+                <input type="file" accept="image/*" data-image-input />
+                Change image
+              </label>
+            </div>
+          </article>
+
+          <article class="player-card card-blue" data-card>
+            <div class="card-inner">
+              <div class="card-rim"></div>
+              <div class="card-meta">
+                <strong>91</strong>
+                <span>CM</span>
+              </div>
+              <div class="club-mark">PRO</div>
+              <div class="player-frame">
+                <div class="player-photo playmaker"></div>
+              </div>
+              <div class="player-name">Vu Tran</div>
+              <div class="stat-grid">
+                <span><b>82</b> PAC</span>
+                <span><b>86</b> SHO</span>
+                <span><b>96</b> PAS</span>
+                <span><b>92</b> DRI</span>
+                <span><b>78</b> DEF</span>
+                <span><b>81</b> PHY</span>
+              </div>
+              <label class="image-picker">
+                <input type="file" accept="image/*" data-image-input />
+                Change image
+              </label>
+            </div>
+          </article>
+
+          <article class="player-card card-red" data-card>
+            <div class="card-inner">
+              <div class="card-rim"></div>
+              <div class="card-meta">
+                <strong>89</strong>
+                <span>CB</span>
+              </div>
+              <div class="club-mark">FC</div>
+              <div class="player-frame">
+                <div class="player-photo guardian"></div>
+              </div>
+              <div class="player-name">Danh Bui</div>
+              <div class="stat-grid">
+                <span><b>78</b> PAC</span>
+                <span><b>62</b> SHO</span>
+                <span><b>76</b> PAS</span>
+                <span><b>74</b> DRI</span>
+                <span><b>94</b> DEF</span>
+                <span><b>93</b> PHY</span>
+              </div>
+              <label class="image-picker">
+                <input type="file" accept="image/*" data-image-input />
+                Change image
+              </label>
+            </div>
+          </article>
         </div>
       </section>
-      <aside class="control-panel" aria-label="Scene controls">
-        <div class="mode-tabs" role="group" aria-label="Station mode">
-          <button class="mode-button is-active" type="button" data-mode="launch">Launch</button>
-          <button class="mode-button" type="button" data-mode="scan">Scan</button>
-          <button class="mode-button" type="button" data-mode="storm">Storm</button>
-        </div>
-        <div class="telemetry">
-          <span>Velocity</span>
-          <strong id="velocity-readout">1.0x</strong>
-        </div>
-        <div class="telemetry">
-          <span>Mode</span>
-          <strong id="mode-readout">Launch</strong>
-        </div>
-      </aside>
     </main>
     <script type="module" src="/src/main.ts"></script>
   </body>
