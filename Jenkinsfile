@@ -73,47 +73,109 @@ pipeline {
             }
         }
 
-        stage('Validate Environment') {
-            steps {
-                sh '''
-                    set -eu
+stage('Validate Environment') {
+    steps {
+        script {
+            /*
+             * Jenkins cung cấp parameter qua đối tượng params.
+             * Ta kiểm tra rồi copy sang env để các lệnh shell bên dưới dùng được.
+             */
 
-                    echo "Checking required tools..."
-
-                    git --version
-                    docker version
-                    docker buildx version
-                    aws --version
-                    jq --version
-                    curl --version
-
-                    echo "Checking AWS identity..."
-
-                    aws sts get-caller-identity
-
-                    if [ "$AWS_ACCOUNT_ID" = "123456789012" ]; then
-                        echo "ERROR: Replace AWS_ACCOUNT_ID with your real AWS Account ID."
-                        exit 1
-                    fi
-
-                    case "$WEB_INSTANCE_ID" in
-                        ""|i-REPLACE_WITH_WEB_INSTANCE_ID)
-                            echo "ERROR: Replace WEB_INSTANCE_ID with the real Web EC2 instance ID."
-                            exit 1
-                            ;;
-                    esac
-
-                    echo "Checking ECR repository..."
-
-                    aws ecr describe-repositories \
-                        --region "$AWS_REGION" \
-                        --repository-names "$ECR_REPOSITORY" \
-                        >/dev/null
-
-                    echo "Environment validation passed."
-                '''
+            if (!params.AWS_REGION?.trim()) {
+                error('AWS_REGION chưa được khai báo.')
             }
+
+            if (!params.AWS_ACCOUNT_ID?.trim()) {
+                error('AWS_ACCOUNT_ID chưa được khai báo.')
+            }
+
+            if (!params.ECR_REPOSITORY?.trim()) {
+                error('ECR_REPOSITORY chưa được khai báo.')
+            }
+
+            if (!params.WEB_INSTANCE_ID?.trim()) {
+                error('WEB_INSTANCE_ID chưa được khai báo.')
+            }
+
+            if (!params.VERIFY_URL?.trim()) {
+                error('VERIFY_URL chưa được khai báo.')
+            }
+
+            env.AWS_REGION = params.AWS_REGION.trim()
+            env.AWS_ACCOUNT_ID = params.AWS_ACCOUNT_ID.trim()
+            env.ECR_REPOSITORY = params.ECR_REPOSITORY.trim()
+            env.WEB_INSTANCE_ID = params.WEB_INSTANCE_ID.trim()
+            env.VERIFY_URL = params.VERIFY_URL.trim()
         }
+
+        sh '''
+            set -eu
+
+            echo "Checking required tools..."
+
+            git --version
+            docker version
+            docker buildx version
+            aws --version
+            jq --version
+            curl --version
+
+            echo "Checking AWS identity..."
+
+            aws sts get-caller-identity
+
+            case "$AWS_ACCOUNT_ID" in
+                ''|*[!0-9]*)
+                    echo "ERROR: AWS_ACCOUNT_ID phải gồm 12 chữ số."
+                    exit 1
+                    ;;
+            esac
+
+            if [ "${#AWS_ACCOUNT_ID}" -ne 12 ]; then
+                echo "ERROR: AWS_ACCOUNT_ID phải gồm đúng 12 chữ số."
+                exit 1
+            fi
+
+            case "$WEB_INSTANCE_ID" in
+                i-*)
+                    ;;
+                *)
+                    echo "ERROR: WEB_INSTANCE_ID không hợp lệ: $WEB_INSTANCE_ID"
+                    exit 1
+                    ;;
+            esac
+
+            echo "Checking that IAM account matches AWS_ACCOUNT_ID..."
+
+            ACTUAL_ACCOUNT_ID="$(
+                aws sts get-caller-identity \
+                    --query Account \
+                    --output text
+            )"
+
+            if [ "$ACTUAL_ACCOUNT_ID" != "$AWS_ACCOUNT_ID" ]; then
+                echo "ERROR: AWS Account ID không khớp."
+                echo "Configured: $AWS_ACCOUNT_ID"
+                echo "IAM role:   $ACTUAL_ACCOUNT_ID"
+                exit 1
+            fi
+
+            echo "Checking ECR repository..."
+
+            aws ecr describe-repositories \
+                --region "$AWS_REGION" \
+                --repository-names "$ECR_REPOSITORY" \
+                >/dev/null
+
+            echo "Environment validation passed."
+            echo "AWS region:      $AWS_REGION"
+            echo "AWS account:     $AWS_ACCOUNT_ID"
+            echo "ECR repository:  $ECR_REPOSITORY"
+            echo "Web instance:    $WEB_INSTANCE_ID"
+            echo "Verification URL: $VERIFY_URL"
+        '''
+    }
+}
 
         stage('Set Image Metadata') {
             steps {
