@@ -15,7 +15,7 @@ export const mentorCards: MentorCard[] = [
   {
     id: 'wyatt',
     name: 'Wyatt Truong',
-    image: '/mentors/images.jpg',
+    image: '/mentors/images2.jpg',
     rating: '99',
     role: 'LEAD',
     theme: 'gold',
@@ -47,7 +47,7 @@ export const mentorCards: MentorCard[] = [
   {
     id: 'danh',
     name: 'Danh Bui',
-    image: '/mentors/images.jpg',
+    image: '/mentors/image2.jpg',
     rating: '96',
     role: 'CORE',
     theme: 'red',
