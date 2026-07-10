@@ -22,13 +22,13 @@ pipeline {
 
         string(
             name: 'WEB_INSTANCE_ID',
-            defaultValue: 'i-08bf8ea004e259491',
+            defaultValue: 'i-0d3ca84042a23d1c8',
             description: 'Instance ID của Web EC2'
         )
 
         string(
             name: 'VERIFY_URL',
-            defaultValue: 'http://172.31.46.202',
+            defaultValue: 'http://172.31.43.165',
             description: 'URL dùng để kiểm tra website sau deploy'
         )
     }
