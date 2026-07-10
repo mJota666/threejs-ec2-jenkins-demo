@@ -47,7 +47,7 @@ export const mentorCards: MentorCard[] = [
   {
     id: 'danh',
     name: 'Danh Bui',
-    image: '/mentors/image2.jpg',
+    image: '/mentors/images2.jpg',
     rating: '96',
     role: 'CORE',
     theme: 'red',
